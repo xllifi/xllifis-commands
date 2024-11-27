@@ -1,0 +1,12 @@
+{
+  "text.xllifiscommands.generic.fail.console": "§cOnly a player can use this!",
+  "text.xllifiscommands.spawn.success": "You are teleported to spawn",
+  "text.xllifiscommands.grant.success": "Claim anchor given",
+  "text.xllifiscommands.grant.reset.success": "Reset grant status for: %s",
+  "text.xllifiscommands.grant.fail.already_granted": "§cYou have already been given a claim anchor!",
+  "text.xllifiscommands.grant.fail.bad_item": "§cAn error occurred when granting and has been logged. Please contact your server administrator.",
+  "text.xllifiscommands.grant.fail.locked": "§cOops! Something went wrong. Please try again.",
+  "text.xllifiscommands.reload.success": "Config reloaded",
+
+  "text.xllifiscommands.stop.noreason": "Server closed, no reason specified"
+}

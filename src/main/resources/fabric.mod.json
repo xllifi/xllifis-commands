@@ -1,0 +1,26 @@
+{
+	"schemaVersion": 1,
+	"id": "xllifis-commands",
+	"version": "${version}",
+	"name": "xllifi's Commands",
+	"description": "This mods adds some commands!",
+	"authors": [
+		"xllifi"
+	],
+	"contact": {},
+	"license": "GPL-3.0-only",
+	"icon": "assets/xllifis-commands/icon.png",
+	"environment": "server",
+	"entrypoints": {
+		"main": [
+          "ru.xllifi.commands.Main"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.16.3",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*",
+		"luckperms": ">=5.0"
+	}
+}

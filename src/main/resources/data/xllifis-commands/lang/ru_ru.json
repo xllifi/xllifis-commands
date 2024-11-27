@@ -1,0 +1,12 @@
+{
+  "text.xllifiscommands.generic.fail.console": "§cТолько игрок может сделать это!",
+  "text.xllifiscommands.spawn.success": "Вы телепортированы на спавн",
+  "text.xllifiscommands.grant.success": "Вам выдан приват",
+  "text.xllifiscommands.grant.reset.success": "Статус выдачи сброшен для: %s",
+  "text.xllifiscommands.grant.fail.already_granted": "§cВам уже был выдан приват!",
+  "text.xllifiscommands.grant.fail.bad_item": "§cПри выдаче произошла ошибка, которая была сохранена в журнал. Пожалуйста, обратитесь к администратору сервера.",
+  "text.xllifiscommands.grant.fail.locked": "§cУпс! Что-то пошло не так. Попробуйте снова.",
+  "text.xllifiscommands.reload.success": "Конфиг перезагружен!",
+
+  "text.xllifiscommands.stop.noreason": "Сервер закрыт, причина неизвестна"
+}
