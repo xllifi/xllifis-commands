@@ -21,7 +21,10 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import ru.xllifi.commands.config.Config;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static ru.xllifi.commands.Main.*;
@@ -38,7 +41,7 @@ public class RewardManager {
                 .setItem(Registries.ITEM.get(Identifier.of(CONFIG.rewardConfig.emptyItem.item_name)))
                 .setCount(CONFIG.rewardConfig.emptyItem.count)
                 .setName(Text.literal(CONFIG.rewardConfig.emptyItem.item_name))
-                .setCustomModelData(List.of(CONFIG.rewardConfig.emptyItem.cmd), List.of(), List.of(), List.of())
+                .setCustomModelData(CONFIG.rewardConfig.emptyItem.cmd)
                 .hideTooltip();
 
         for (int x = 0; x < 27; x++) gui.setSlot(x, emptyItem);
@@ -50,7 +53,7 @@ public class RewardManager {
             if (!lpUser.getNodes(NodeType.SUFFIX).isEmpty() && lpUser.getNodes(NodeType.SUFFIX).stream().allMatch(x -> Objects.equals(x.getKey(), rewardNode))) { // Equpped item
                 rewardItemBuilder = new GuiElementBuilder()
                         .setItem(Registries.ITEM.get(Identifier.of(rewardItem.equippedItem.id)))
-                        .setCustomModelData(List.of(rewardItem.equippedItem.cmd), List.of(), List.of(), List.of())
+                        .setCustomModelData(rewardItem.equippedItem.cmd)
                         .hideDefaultTooltip()
                         .setName(Text.literal(rewardItem.equippedItem.item_name))
                         .setCount(rewardItem.equippedItem.count)
@@ -69,7 +72,7 @@ public class RewardManager {
                 if (playtime.get() >= requiredPlaytime) { // Eligible item
                     rewardItemBuilder = new GuiElementBuilder()
                             .setItem(Registries.ITEM.get(Identifier.of(rewardItem.activeItem.id)))
-                            .setCustomModelData(List.of(rewardItem.activeItem.cmd), List.of(), List.of(), List.of())
+                            .setCustomModelData(rewardItem.activeItem.cmd)
                             .hideDefaultTooltip()
                             .setName(Text.literal(rewardItem.activeItem.item_name))
                             .setCount(rewardItem.activeItem.count)
@@ -94,7 +97,7 @@ public class RewardManager {
                 } else { // Ineligible item
                     rewardItemBuilder = new GuiElementBuilder()
                             .setItem(Registries.ITEM.get(Identifier.of(rewardItem.inactiveItem.id)))
-                            .setCustomModelData(List.of(rewardItem.inactiveItem.cmd), List.of(), List.of(), List.of())
+                            .setCustomModelData(rewardItem.inactiveItem.cmd)
                             .hideDefaultTooltip()
                             .setName(Text.literal(rewardItem.inactiveItem.item_name))
                             .setCount(rewardItem.inactiveItem.count)
