@@ -2,6 +2,7 @@ package ru.xllifi.commands;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import me.lucko.fabric.api.permissions.v0.Permissions;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
@@ -33,45 +34,43 @@ public class Main implements ModInitializer {
 
 	public static void registerXllifiCommands() {
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
-			if (environment.dedicated) {
-				// Spawn commands
-				dispatcher.register(CommandManager.literal("spawn")
-						.executes(SpawnCommand::executeSpawnCommand)
-				);
-				dispatcher.register(CommandManager.literal("спавн")
-						.executes(SpawnCommand::executeSpawnCommand)
-				);
-				// Grant commands
-				dispatcher.register(CommandManager.literal("grant")
-						.then(CommandManager.literal("reset")
-								.then(CommandManager.argument("targets", EntityArgumentType.players())
-										.requires(source -> source.hasPermissionLevel(3))
-										.executes(GrantCommand::resetGranted)
-								)
-						)
-						.executes(GrantCommand::executeGrantCommand)
-				);
-				dispatcher.register(CommandManager.literal("приват")
-						.executes(GrantCommand::executeGrantCommand)
-				);
-				// Config reload commands
-				dispatcher.register(CommandManager.literal("xcreload")
-						.requires(source -> source.hasPermissionLevel(3))
-						.executes(context -> {
-							Main.CONFIG = Config.loadOrCreateConfig();
-							context.getSource().sendFeedback(() -> CONFIG.prefix(Text.translatable("text.xllifiscommands.reload.success")), false);
-							return 1;
-						})
-				);
-				dispatcher.register(CommandManager.literal("rewards")
-						.requires(source -> source.hasPermissionLevel(4))
-						.executes(RewardManager::executeCommand)
-				);
-				dispatcher.register(CommandManager.literal("награды")
-						.requires(source -> source.hasPermissionLevel(4))
-						.executes(RewardManager::executeCommand)
-				);
-			}
+			// Spawn commands
+			dispatcher.register(CommandManager.literal("spawn")
+				.executes(SpawnCommand::executeSpawnCommand)
+			);
+			dispatcher.register(CommandManager.literal("спавн")
+				.executes(SpawnCommand::executeSpawnCommand)
+			);
+			// Grant commands
+			dispatcher.register(CommandManager.literal("grant")
+				.then(CommandManager.literal("reset")
+					.then(CommandManager.argument("targets", EntityArgumentType.players())
+						.requires(Permissions.require(""))
+						.executes(GrantCommand::resetGranted)
+					)
+				)
+				.executes(GrantCommand::executeGrantCommand)
+			);
+			dispatcher.register(CommandManager.literal("приват")
+				.executes(GrantCommand::executeGrantCommand)
+			);
+			// Config reload commands
+			dispatcher.register(CommandManager.literal("xcreload")
+				.requires(Permissions.require("xc.commands.reload"))
+				.executes(context -> {
+					Main.CONFIG = Config.loadOrCreateConfig();
+					context.getSource().sendFeedback(() -> CONFIG.prefix(Text.translatable("text.xllifiscommands.reload.success")), false);
+					return 1;
+				})
+			);
+			dispatcher.register(CommandManager.literal("rewards")
+				.requires(Permissions.require("xc.commands.rewards"))
+				.executes(RewardManager::executeCommand)
+			);
+			dispatcher.register(CommandManager.literal("награды")
+				.requires(Permissions.require("xc.commands.rewards"))
+				.executes(RewardManager::executeCommand)
+			);
 		});
 	}
 

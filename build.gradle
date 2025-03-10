@@ -46,6 +46,8 @@ dependencies {
 	modImplementation include("xyz.nucleoid:server-translations-api:${project.server_translations_version}")
 	// SGUI
 	modImplementation include("eu.pb4:sgui:${project.sgui_version}")
+	// Fabric Permissions API
+	include(modImplementation("me.lucko:fabric-permissions-api:${project.fabric_permissions_api}"))
 
 	// LP API
 	compileOnly 'net.luckperms:api:5.4'
