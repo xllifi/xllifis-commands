@@ -21,7 +21,7 @@ public class Config {
     // Values to store
 
     @SerializedName("grant_item")
-    public StoredItem[] grantItem = new StoredItem[]{new StoredItem("minecraft:stone", 1, "")};
+    public StoredItem[] grantItem = new StoredItem[]{new StoredItem("minecraft:stone", 1, "", 0)};
 
     @SerializedName("granted_players")
     public List<UUID> grantedPlayers = List.of();
@@ -51,10 +51,12 @@ public class Config {
         public String id = "minecraft:stone";
         public int count = 1;
         public String item_name = "";
-        StoredItem(String id, int count, String item_name) {
+        public float cmd = 0;
+        StoredItem(String id, int count, String item_name, int cmd) {
             this.id = id;
             this.count = count;
             this.item_name = item_name;
+            this.cmd = cmd;
         }
     }
     public static class RewardConfig {
@@ -64,6 +66,8 @@ public class Config {
         public String hoursFormat = "%dh";
         @SerializedName("minutes_format")
         public String minutesFormat = "%dm";
+        @SerializedName("empty_item")
+        public StoredItem emptyItem = new StoredItem("minecraft:light_gray_stained_glass_pane", 1, "", 0);
         @SerializedName("items")
         public RewardItem[] items = new RewardItem[]{new RewardItem()};
     }
@@ -77,22 +81,22 @@ public class Config {
         @SerializedName("reward_suffix_priority")
         public int rewardSuffixPriority = 10;
         @SerializedName("active_item")
-        public StoredItem eligibleItem = new StoredItem("minecraft:iron_ore", 1, "Reward for 30M");
+        public StoredItem activeItem = new StoredItem("minecraft:iron_ore", 1, "Reward for 30M", 0);
         @SerializedName("inactive_item")
-        public StoredItem ineligibleItem = new StoredItem("minecraft:stone", 1, "Reward for 30M");
+        public StoredItem inactiveItem = new StoredItem("minecraft:stone", 1, "Reward for 30M", 0);
         @SerializedName("equipped_item")
-        public StoredItem equippedItem = new StoredItem("minecraft:iron_block", 1, "Reward for 30M (equipped)");
+        public StoredItem equippedItem = new StoredItem("minecraft:iron_block", 1, "Reward for 30M (equipped)", 0);
         @SerializedName("chat_messages")
-        public RewardItemMessages chatMessages = new RewardItemMessages();
+        public RewardItemChatMessages chatMessages = new RewardItemChatMessages();
         @SerializedName("reward_sound")
         public String rewardSound = "minecraft:entity.player.levelup";
         RewardItem() {}
     }
-    public static class RewardItemMessages {
-        @SerializedName("eligible_granted")
-        public String eligibleGranted = "Yay! You got a reward because you have played for %n.";
-        @SerializedName("ineligible_clicked")
-        public String ineligibleClicked = "You are not eligible for this reward! Play for %n more.";
+    public static class RewardItemChatMessages {
+        @SerializedName("active_clicked")
+        public String activeClicked = "Yay! You got a reward because you have played for %s.";
+        @SerializedName("inactive_clicked")
+        public String inactiveClicked = "You are not eligible for this reward! Play for %s more.";
         @SerializedName("equipped_clicked")
         public String equippedClicked = "This reward is already equipped!";
     }
