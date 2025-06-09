@@ -51,7 +51,7 @@ public class Config {
         public String id = "minecraft:stone";
         public int count = 1;
         public String item_name = "";
-        public int cmd = 0;
+        public float cmd = 0;
         StoredItem(String id, int count, String item_name, int cmd) {
             this.id = id;
             this.count = count;
