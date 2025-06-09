@@ -24,7 +24,7 @@ public class Config {
     public StoredItem[] grantItem = new StoredItem[]{new StoredItem("minecraft:stone", 1, "", 0)};
 
     @SerializedName("granted_players")
-    public List<UUID> grantedPlayers = List.of();
+    public ArrayList<UUID> grantedPlayers = new ArrayList<UUID>();
 
     @SerializedName("message_prefix")
     public String messagePrefix = "§7[Server]§r";

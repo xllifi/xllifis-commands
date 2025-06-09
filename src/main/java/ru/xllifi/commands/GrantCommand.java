@@ -55,7 +55,9 @@ public class GrantCommand {
             source.getPlayer().giveItemStack(itemStack);
         }
         CONFIG.setLocked(true);
+        LOGGER.info("Old list: " + CONFIG.grantedPlayers.toString());
         CONFIG.grantedPlayers.add(source.getPlayer().getUuid());
+        LOGGER.info("New list: " + CONFIG.grantedPlayers.toString());
         Config.saveConfig(CONFIG);
         CONFIG.setLocked(false);
         source.sendFeedback(() -> CONFIG.prefix(Text.translatable("text.xllifiscommands.grant.success")), false);

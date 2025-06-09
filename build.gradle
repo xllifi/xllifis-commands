@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.7-SNAPSHOT'
+	id 'fabric-loom' version "${loom_version}"
 	id 'maven-publish'
 }
 
@@ -43,11 +43,11 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// Server Translations
-	modImplementation include("xyz.nucleoid:server-translations-api:${project.server_translations_version}")
+	modImplementation include("xyz.nucleoid:server-translations-api:${project.str_version}")
 	// SGUI
 	modImplementation include("eu.pb4:sgui:${project.sgui_version}")
 	// Fabric Permissions API
-	include(modImplementation("me.lucko:fabric-permissions-api:${project.fabric_permissions_api}"))
+	include(modImplementation("me.lucko:fabric-permissions-api:${project.permissions_api_version}"))
 
 	// LP API
 	compileOnly 'net.luckperms:api:5.4'
