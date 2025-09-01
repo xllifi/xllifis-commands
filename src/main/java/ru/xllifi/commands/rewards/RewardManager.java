@@ -2,13 +2,11 @@ package ru.xllifi.commands.rewards;
 
 import com.mojang.brigadier.context.CommandContext;
 import eu.pb4.sgui.api.elements.GuiElementBuilder;
-import eu.pb4.sgui.api.elements.GuiElementInterface;
 import eu.pb4.sgui.api.gui.SimpleGui;
 import net.luckperms.api.model.user.User;
 import net.luckperms.api.node.Node;
 import net.luckperms.api.node.NodeType;
 import net.minecraft.component.DataComponentTypes;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.screen.ScreenHandlerType;
@@ -46,8 +44,6 @@ public class RewardManager {
         for (int x = 0; x < 27; x++)
             gui.setSlot(x, emptyItem);
         for (Config.RewardItem rewardItem : CONFIG.rewardConfig.items) {
-            GuiElementBuilder rewardItemBuilder;
-
             gui.setSlot(rewardItem.itemIndex, itemToGuiElement(gui, rewardItem, player, lpUser, playtime));
         }
 
